@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
+import './screens/login_screen.dart';
+
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       title: 'Account Manager',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+          primaryColor: Colors.blue[400],
+          fontFamily: 'Proxima',
+          textTheme: const TextTheme(
+              headline1:
+                  TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold))),
+      home: LoginScreen(),
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Account Manager'),
-          backgroundColor: Colors.blue,
-        ),
-        body: Container(
-            child: Container(
-          child: Text("Temperaly"),
-        )));
   }
 }
