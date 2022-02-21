@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-AppBar appBar = AppBar(
-  title: Text("Login"),
-);
+import './list_screen.dart';
 
 Widget TextField_(context, String hintText, TextEditingController controller,
     FocusNode focusNode, FocusNode nextField) {
@@ -52,13 +49,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void enter() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text("Email: ${_email.text} Password: ${_password.text}"),
-          );
-        });
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return AlertDialog(
+    //         content: Text("Email: ${_email.text} Password: ${_password.text}"),
+    //       );
+    //     });
+    Navigator.of(context).pushNamed(List_Screen.route_name);
   }
 
   @override
